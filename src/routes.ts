@@ -12,10 +12,10 @@ router.get("/", (req: Request, res: Response) => {
     res.status(200).send("Welcome to the MENTS API");
 });
 
-router.post("/product", createProduct);
-router.get("/product", getAllProduct);
-router.get("/product/:id", getProductById);
-router.put("/product/:id", updateProductById);
-router.delete("/product/:id", deleteProductById);
+router.post("/products", createProduct);
+router.get("/products", getAllProduct);
+router.get("/products/:id", getProductById);
+router.put("/products/:id", updateProductById);
+router.delete("/products/:id", deleteProductById);
 
 export default router;
