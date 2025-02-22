@@ -18,7 +18,6 @@
     "url": "https://github.com/jayb2302/MENTS-API/issues"
   },
   "homepage": "https://github.com/jayb2302/MENTS-API#readme",
-
   "nodemonConfig": {
     "verbose": false,
     "watch": [
@@ -30,8 +29,8 @@
       "node_modules"
     ]
   },
-
   "dependencies": {
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv-flow": "^4.1.0",
     "express": "^4.21.2",
@@ -41,6 +40,7 @@
     "nodemon": "^3.1.9"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/joi": "^17.2.2",
     "@types/node": "^22.10.10",
