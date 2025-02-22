@@ -23,7 +23,7 @@ export async function createProduct(req: Request, res: Response): Promise<void> 
     }
 }
 
-export async function getAllProduct(req: Request, res: Response) {
+export async function getAllProducts(req: Request, res: Response) {
     try {
         await connect();
         
@@ -50,6 +50,31 @@ export async function getProductById(req: Request, res: Response) {
     }
     catch (error) {
         res.status(500).send("Error retrieving products by id. " + error);
+    }
+    finally {
+        await disconnect();
+    }
+}
+
+/**
+ * Retrieves a product by its id from the data sources
+ * @param req 
+ * @param res 
+ */
+export async function getProductsByQuery(req: Request, res: Response) {
+
+    const key = req.params.key;
+    const val = req.params.val;
+
+    try {
+        await connect();
+
+        const result = await productModel.find({ [key]: { $regex: val, $options: 'i' } });
+
+        res.status(200).send(result);
+    }
+    catch (err) {
+        res.status(500).send("Error retrieving products. Error: " + err);
     }
     finally {
         await disconnect();
