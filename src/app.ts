@@ -3,6 +3,7 @@ import dotenvFlow from 'dotenv-flow';
 import cors from 'cors';
 import routes from './routes';
 import { testConnection, connect } from './repository/database';
+import setupSwagger from './swagger';
 
 dotenvFlow.config();
 
@@ -23,6 +24,7 @@ app.use(cors());
 // Middleware
 export function startServer() {
   app.use(express.json());
+  setupSwagger(app); 
   // Bind routes to the app
   app.use('/api', routes);
 
