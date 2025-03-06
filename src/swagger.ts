@@ -25,11 +25,6 @@ const options: swaggerJsdoc.Options = {
         },
       },
     },
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
   },
   apis: ["./src/routes.ts", "./src/controllers/*.ts"], // Path to the API docs
 };
