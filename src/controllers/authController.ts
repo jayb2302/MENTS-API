@@ -1,5 +1,5 @@
 // imports
-import e, { type Request, type Response, type NextFunction } from "express";
+import { type Request, type Response, type NextFunction } from "express";
 
 import jwt from "jsonwebtoken";
 
@@ -134,7 +134,7 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
             jwt.verify(token, process.env.TOKEN_SECRET as string);
         next();
     }
-    catch (error) {
+    catch {
         res.status(401).send("Invalid Token");
     }
 }
