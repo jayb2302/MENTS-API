@@ -24,7 +24,7 @@ export async function connect() {
         // ping the server to check if we have a connection
         if (mongoose.connection.db) {
             await mongoose.connection.db.admin().command({ ping: 1});
-            console.log('Connection established');
+            //console.log('Connection established');
         }
         else {
             throw new Error('Database connection is not established');
@@ -40,7 +40,7 @@ export async function connect() {
 export async function disconnect() {
     try {
         await mongoose.disconnect();
-        console.log('Connection closed');
+        //console.log('Connection closed');
     }
     catch (error) {
         console.log('Error closing database connection. Error: ' + error);

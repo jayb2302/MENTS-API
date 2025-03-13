@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
-    "start-dev": "npx nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint"
+    "start-dev": "cross-env NODE_ENV=development npx nodemon",
+    "lint": "npx eslint",
+    "seed": "npx ts-node ./src/utils/dataSeeder.ts",
+    "testdb": "cross-env NODE_ENV=test ts-node ./src/index.ts",
+    "test": "npx playwright test --reporter=list"
+
   },
   "repository": {
     "type": "git",
@@ -46,6 +49,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@faker-js/faker": "^9.6.0",
+    "@playwright/test": "^1.51.0",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",

@@ -28,7 +28,7 @@ const router: Router = Router();
  *         description: Successful response
  */
 router.get("/", (req: Request, res: Response) => {
-  res.status(200).send("Welcome to the MENTS API");
+  res.status(200).send({ message: 'Welcome to the MENTS API' });
 });
 
 /**
