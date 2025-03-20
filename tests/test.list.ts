@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'test';
 import { test } from '@playwright/test';
 import health from './health.test';
 import userTestCollection from './user.test';
+import productTestCollection from './product.test';
 
 import { userModel } from '../src/models/User';
 import { productModel } from '../src/models/Product';
@@ -39,3 +40,4 @@ function setUp() {
 setUp();
 test.describe(health);
 test.describe(userTestCollection);
+test.describe(productTestCollection);
