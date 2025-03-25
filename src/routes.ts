@@ -12,6 +12,7 @@ import {
   registerUser,
   verifyToken,
 } from "./controllers/authController";
+import { getUserById } from './controllers/userController';
 
 const router: Router = Router();
 
@@ -90,6 +91,11 @@ router.post("/user/register", registerUser);
  *         description: Server error
  */
 router.post("/user/login", loginUser);
+
+// Get User by ID
+router.get("/user/:id", getUserById);
+
+
 
 /**
  * @swagger

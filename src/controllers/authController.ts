@@ -92,7 +92,7 @@ export async function loginUser(req: Request, res: Response) {
         return;
       }
 
-      const userId: string = user.id;
+      const userId: string = user._id;
       const token: string = jwt.sign(
         {
           // payload
