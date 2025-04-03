@@ -38,9 +38,9 @@ jobs:
             touch .env
             echo "${{secrets.API}}" >> .env
 
-      # - name: Test printing your secret (Remove this step in production)
-      #   run: |
-      #       cat .env
+      - name: Test printing your secret (Remove this step in production)
+        run: |
+            cat .env
 
       - name: NPM install, build and test
         run: |
