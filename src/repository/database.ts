@@ -14,25 +14,25 @@ export async function testConnection() {
 
 // Connect to the database
 export async function connect() {
-    try
-    {
-        if (!process.env.DBHOST) {
-            throw new Error('DBHOST environment variable is not defined');
-        }
-        await mongoose.connect(process.env.DBHOST);
+    try {
+        const dbUri = process.env.DBHOST_LOCAL || process.env.DBHOST;
+        const dbName = process.env.DB_NAME || 'webshop';
 
-        // ping the server to check if we have a connection
-        if (mongoose.connection.db) {
-            await mongoose.connection.db.admin().command({ ping: 1});
-            //console.log('Connection established');
+        if (!dbUri) {
+            throw new Error('No DB connection string found.');
         }
-        else {
+
+        await mongoose.connect(dbUri, { dbName });
+
+        // Ping the DB to confirm connection
+        if (mongoose.connection.db) {
+            await mongoose.connection.db.admin().command({ ping: 1 });
+            console.log(`✅ Connected to MongoDB (${dbUri.includes('localhost') ? 'Local' : 'Remote'}) - DB: ${dbName}`);
+        } else {
             throw new Error('Database connection is not established');
         }
-
-    }
-    catch (error) {
-        console.log('Error connecting to the database. Error: ' + error);
+    } catch (error) {
+        console.log('❌ DB Connection Error:', error);
     }
 }
 
